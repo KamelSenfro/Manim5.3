@@ -1,20 +1,20 @@
 from manim import *
 
-class ShowWrite(Scene):
+class QuarterCircleSquareExample(Scene):
     def construct(self):
-        T1 = Text("Thank you for your time", font_size=60,gradient=(BLUE , GREEN)).to_edge(UP)
-        T2 = MarkupText(f'You could find more about me on my LinkedIn',gradient=(BLUE, GREEN), font_size=40)
-        T3= Text("Kamel Senfro",color=YELLOW,font_size=80).to_edge(DOWN)
-        #text_group = VGroup(T1, T2)
-        ##self.play(Write(Text("Thank you for your time", font_size=144, run_time=3)))
+        # Define the radius of the circle and the start/end angles for the quarter
+        radius = 1
+        start_angle = 0
+        end_angle = PI / 2  # Quarter of a full circle
 
-        # Animate writing the text group
-        #\n <span fgcolor="{YELLOW}">Kamel Senfro</span>
-        
-        self.play(Write(T1), run_time=3)
+        # Create the filled area representing the quarter circle
+        quarter_fill = Sector(radius=radius, start_angle=start_angle, angle=-end_angle, color=GREEN, fill_opacity=0.5)  # Adjust opacity as needed
+
+        # Create a square behind the circle
+        square = Circle(radius=2*radius, color=WHITE, fill_opacity=0.5)
+
+        # Display the filled area and the square
+        self.play(Create(quarter_fill)) 
         self.wait(1)
-        self.play(Write(T2), run_time=3,reverse=True, remover=False)
-        self.wait(1)
-        self.play(Write(T3), run_time=2)
-        self.wait(3)
-        #manim  -pql Name.py ShowWrite
+        self.play(Create(square))
+       
