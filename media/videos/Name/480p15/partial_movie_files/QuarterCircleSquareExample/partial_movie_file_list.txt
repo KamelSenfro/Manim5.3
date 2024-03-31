@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:F:/6-Matematik ß/Manim/3,5/media/videos/Name/480p15/partial_movie_files/QuarterCircleSquareExample/1185818338_228231227_223132457.mp4'
+file 'file:F:/6-Matematik ß/Manim/3,5/media/videos/Name/480p15/partial_movie_files/QuarterCircleSquareExample/624642324_3890345977_2451047215.mp4'
+file 'file:F:/6-Matematik ß/Manim/3,5/media/videos/Name/480p15/partial_movie_files/QuarterCircleSquareExample/624642324_2566004613_23406744.mp4'
