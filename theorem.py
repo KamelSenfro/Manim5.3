@@ -4,7 +4,7 @@ import numpy as np
 # Configured to be a vertical video
 config.pixel_height = 1920
 config.pixel_width = 1080
-config.background_color = LOGO_BLACK
+config.background_color = BLACK
 
 
 class pyProof(MovingCameraScene):
@@ -34,8 +34,8 @@ class pyProof(MovingCameraScene):
         triangleFour = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
                                color=WHITE, fill_opacity=0.5)
 
-        angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color=RED)
-        angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=RED)
+        angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color = [PURE_GREEN,WHITE])
+        angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=[PURE_GREEN,WHITE])
 
         bigSquare = Polygon([-5, -3, 0], [-5, 7, 0],
                             [5, 7, 0], [5, -3, 0], fill_color=RED, fill_opacity=0.75, stroke_color=RED)
