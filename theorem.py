@@ -22,6 +22,7 @@ class pyProof(MovingCameraScene):
 
         grid = NumberPlane(color=WHITE)
 
+        # Create triangles
         triangleOne = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
                               color=WHITE, fill_opacity=0.5)
 
@@ -34,18 +35,23 @@ class pyProof(MovingCameraScene):
         triangleFour = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
                                color=WHITE, fill_opacity=0.5)
 
+        # Create angle lines
         angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color = [PURE_GREEN,WHITE])
         angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=[PURE_GREEN,WHITE])
 
+        # Create big square
         bigSquare = Polygon([-5, -3, 0], [-5, 7, 0],
                             [5, 7, 0], [5, -3, 0], fill_color=RED, fill_opacity=0.75, stroke_color=RED)
         bigSquareArea = Polygon([-5, -3, 0], [-5, 7, 0],
                                 [5, 7, 0], [5, -3, 0], fill_color=RED, fill_opacity=0.75, stroke_color=RED)
+
+        # Create small square
         smallSquareColor = Polygon([-5, 1, 0], [-1, 7, 0],
                                    [5, 3, 0], [1, -3, 0], fill_color=BLUE, fill_opacity=0.5)
         smallSquare = Polygon([-5, 1, 0], [-1, 7, 0],
                               [5, 3, 0], [1, -3, 0], fill_color=BLUE, fill_opacity=0.5)
 
+        # Create labels for triangles
         aOne = Tex("a")
         bOne = Tex("b")
         cOne = Tex("c")
@@ -84,6 +90,7 @@ class pyProof(MovingCameraScene):
         self.add(self.camera.frame)
         self.camera.frame.save_state()
 
+        # Animation sequence
         self.play(
             AnimationGroup(
                 self.camera.frame.animate.move_to(triangleOne),
@@ -188,52 +195,61 @@ class pyProof(MovingCameraScene):
 
         # ANIMATIONS EQUATIONS
 
+        # Write big square area and big square
         self.play(Write(bigSquareArea), Write(bigSquare), run_time=0.5)
 
+        # Move big square area and write equal sign
         self.play(bigSquareArea.animate.move_to(
             [-5.5, -6, 0]).scale(0.1), Write(eqEqual), FadeOut(bigSquare))
 
+        # Fade in green color for all triangles
         self.play(
             FadeToColor(triangleOne, GREEN),
             FadeToColor(triangleTwo, GREEN),
+            
             FadeToColor(triangleThree, GREEN),
             FadeToColor(triangleFour, GREEN),
             run_time=0.5
         )
 
+        # Move and scale small triangles, fade in plus signs
         self.play(
             AnimationGroup(
-                AnimationGroup(
-                    smallTriangleOne.animate.move_to([-2.5, -6, 0]).scale(0.2),
-                    smallTriangleTwo.animate.move_to([-0.5, -6, 0]).scale(0.2),
-                    smallTriangleThre.animate.move_to([1.5, -6, 0]).scale(0.2),
-                    smallTriangleFour.animate.move_to([3.5, -6, 0]).scale(0.2),
-                ),
-                AnimationGroup(
-                    FadeIn(plusOne),
-                    FadeIn(plusTwo),
-                    FadeIn(plusThree)
-                ),
-                lag_ratio=0.5
+            AnimationGroup(
+                smallTriangleOne.animate.move_to([-2.5, -6, 0]).scale(0.2),
+                smallTriangleTwo.animate.move_to([-0.5, -6, 0]).scale(0.2),
+                smallTriangleThre.animate.move_to([1.5, -6, 0]).scale(0.2),
+                smallTriangleFour.animate.move_to([3.5, -6, 0]).scale(0.2),
+            ),
+            AnimationGroup(
+                FadeIn(plusOne),
+                FadeIn(plusTwo),
+                FadeIn(plusThree)
+            ),
+            lag_ratio=0.5
             )
         )
 
+        # Fade in small square color
         self.play(FadeIn(smallSquareColor), run_time=0.5)
 
+        # Move and scale small square, fade in plus sign
         self.play(
             AnimationGroup(
-                smallSquare.animate.move_to(
-                    [5.5, -6, 0]).scale(0.125),  # .rotate(119*PI/640),
-                FadeIn(plusFour),
-                lag_ratio=0.5
+            smallSquare.animate.move_to(
+                [5.5, -6, 0]).scale(0.125),
+            FadeIn(plusFour),
+            lag_ratio=0.5
             )
         )
 
+        # Move and transform triangle equation to square equation, shift square equation and big square area
         self.play(ReplacementTransform(triangleEquationOne, triangleEquationTwo),
-                  squareEquation.animate.shift(2.5*LEFT+DOWN), VGroup(bigSquareArea, eqEqual).animate.shift(3*RIGHT+DOWN))
+              squareEquation.animate.shift(2.5*LEFT+DOWN), VGroup(bigSquareArea, eqEqual).animate.shift(3*RIGHT+DOWN))
 
         self.wait(2)
 
+        # Add underbraces and write equations
         underbraceOne = MathTex(r"\underbrace{}").move_to([0.5, -8, 0])
         underbraceTwo = MathTex(r"\underbrace{}").move_to([3, -8, 0])
         underbraceThree = MathTex(r"\underbrace{}").move_to([-2.5, -8, 0])
@@ -257,7 +273,7 @@ class pyProof(MovingCameraScene):
         self.play(Write(smallSquareEq), Write(plusFive))
 
         self.play(ReplacementTransform(triangleEq, newTriangleEq),
-                  plusFive.animate.shift(LEFT*0.5), smallSquareEq.animate.shift(LEFT*0.75), FadeOut(underbraceOne), FadeOut(underbraceTwo))
+              plusFive.animate.shift(LEFT*0.5), smallSquareEq.animate.shift(LEFT*0.75), FadeOut(underbraceOne), FadeOut(underbraceTwo))
 
         self.wait(1)
 
@@ -265,26 +281,27 @@ class pyProof(MovingCameraScene):
         self.play(Write(bSquareEq), Write(eqEqualTwo))
 
         self.play(ReplacementTransform(bSquareEq, newBSquareEq),
-                  eqEqualTwo.animate.shift(RIGHT*0.5), FadeOut(underbraceThree), VGroup(plusFive, smallSquareEq, newTriangleEq).animate.shift(RIGHT))
+              eqEqualTwo.animate.shift(RIGHT*0.5), FadeOut(underbraceThree), VGroup(plusFive, smallSquareEq, newTriangleEq).animate.shift(RIGHT))
 
         self.wait(1)
 
         finalEq = MathTex("a^2+b^2 = c^2").move_to(VGroup(newBSquareEq, eqEqualTwo,
-                                                          newTriangleEq, smallSquareEq, plusFive).get_center())
+                                  newTriangleEq, smallSquareEq, plusFive).get_center())
 
         self.wait(1)
 
         self.play(TransformMatchingShapes(VGroup(newBSquareEq, smallSquareEq,
-                  newTriangleEq), finalEq), FadeOut(eqEqualTwo), FadeOut(plusFive))
+              newTriangleEq), finalEq), FadeOut(eqEqualTwo), FadeOut(plusFive))
 
         self.wait(2)
 
+        # Fade out unnecessary elements and move triangle one and final equation
         self.play(
             FadeOut(
-                bigSquareArea,
-                triangleEquationTwo, squareEquation, eqEqual,
-                triangleTwo, triangleThree, triangleFour, smallSquareColor,
-                aTwo, bTwo, cTwo, aThree, bThree, cThree, aFour, bFour, cFour
+            bigSquareArea,
+            triangleEquationTwo, squareEquation, eqEqual,
+            triangleTwo, triangleThree, triangleFour, smallSquareColor,
+            aTwo, bTwo, cTwo, aThree, bThree, cThree, aFour, bFour, cFour
             ),
             triangleOne.animate.move_to([0, -1, 0]).scale(2),
             finalEq.animate.move_to([0, -7.5, 0]).scale(2)

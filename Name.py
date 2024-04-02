@@ -55,4 +55,16 @@ class FullCircleSquareExample(Scene):
                        UL.animate.shift(UP * 1 + LEFT * 2), DL.animate.shift(DOWN * 1 + LEFT * 2))
                 
             # Display the filled area and the square
-        
+            D = Sector(radius=6, start_angle=start_angle, angle=-end_angle, color=GREEN, 
+                        fill_opacity=1, stroke_color=[BLUE_A,GREEN_A], stroke_width=2) 
+            U = Sector(radius=6, start_angle=start_angle, angle=end_angle, color=GREEN, fill_opacity=1,
+                       stroke_color=[BLUE_A,GREEN_A], stroke_width=2)
+            BigCircle = Circle(radius=1, color=WHITE, fill_opacity=1, stroke_color=[RED,ORANGE,YELLOW],
+                                stroke_width=2, stroke_opacity=0.51)
+            
+            Qs1 = VGroup(U, D)
+            self.play(Write(BigCircle))
+            self.play(FadeIn(Qs1), run_time=2)
+            self.remove(BigCircle)
+            self.play(U.animate.shift(UP * 2), D.animate.shift(DOWN * 2))
+    
