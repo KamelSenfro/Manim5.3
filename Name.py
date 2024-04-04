@@ -67,4 +67,4 @@ class FullCircleSquareExample(Scene):
             self.play(FadeIn(Qs1), run_time=2)
             self.remove(BigCircle)
             self.play(U.animate.shift(UP * 2), D.animate.shift(DOWN * 2))
-    
+     

@@ -20,50 +20,62 @@ class pyProof(MovingCameraScene):
                 mob.move_to(edge_center).shift(distance*edge_normal)
             return updater
 
-        grid = NumberPlane(color=WHITE)
+        grid = NumberPlane(color=YELLOW)
 
         # Create triangles
         triangleOne = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                              color=WHITE, fill_opacity=0.5)
+                              color=TEAL_C, fill_opacity=0.5)
 
         triangleTwo = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                              color=WHITE, fill_opacity=0.5)
+                              color=TEAL_C, fill_opacity=0.5)
 
         triangleThree = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                                color=WHITE, fill_opacity=0.5)
+                                color=TEAL_C, fill_opacity=0.5)
 
         triangleFour = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                               color=WHITE, fill_opacity=0.5)
+                               color= TEAL_C  , fill_opacity=0.5)
 
         # Create angle lines
-        angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color = [PURE_GREEN,WHITE])
-        angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=[PURE_GREEN,WHITE])
+        angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color = [PURE_GREEN,TEAL_C])
+        angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=[PURE_GREEN,TEAL_C])
 
         # Create big square
         bigSquare = Polygon([-5, -3, 0], [-5, 7, 0],
-                            [5, 7, 0], [5, -3, 0], fill_color=RED, fill_opacity=0.75, stroke_color=RED)
+                            [5, 7, 0], [5, -3, 0], fill_color=PURPLE_A, fill_opacity=0.75, stroke_color=PURPLE_B)
         bigSquareArea = Polygon([-5, -3, 0], [-5, 7, 0],
-                                [5, 7, 0], [5, -3, 0], fill_color=RED, fill_opacity=0.75, stroke_color=RED)
+                                [5, 7, 0], [5, -3, 0], fill_color=PURPLE_A, fill_opacity=0.75, stroke_color=PURPLE_D)
 
         # Create small square
         smallSquareColor = Polygon([-5, 1, 0], [-1, 7, 0],
-                                   [5, 3, 0], [1, -3, 0], fill_color=BLUE, fill_opacity=0.5)
+                                   [5, 3, 0], [1, -3, 0], fill_color=BLUE_C, fill_opacity=0.5)
         smallSquare = Polygon([-5, 1, 0], [-1, 7, 0],
-                              [5, 3, 0], [1, -3, 0], fill_color=BLUE, fill_opacity=0.5)
+                              [5, 3, 0], [1, -3, 0], fill_color=BLUE_C, fill_opacity=0.5)
 
         # Create labels for triangles
-        aOne = Tex("a")
-        bOne = Tex("b")
-        cOne = Tex("c")
-        aTwo = Tex("a")
-        bTwo = Tex("b")
-        cTwo = Tex("c")
-        aThree = Tex("a")
-        bThree = Tex("b")
-        cThree = Tex("c")
-        aFour = Tex("a")
-        bFour = Tex("b")
-        cFour = Tex("c")
+        # aOne = Tex("a").color(YELLOW)
+        # aTwo = Tex("a").color(YELLOW)
+        # aThree = Tex("a").color(YELLOW)
+        # aFour = Tex("a").color(YELLOW)
+        # bOne = Tex("b").color(YELLOW)
+        # bTwo = Tex("b").color(YELLOW)
+        # bThree = Tex("b").color(YELLOW)
+        # bFour = Tex("b").color(YELLOW)
+        # cOne = Tex("c").color(YELLOW)
+        # cTwo = Tex("c").color(YELLOW)
+        # cThree = Tex("c").color(YELLOW)
+        # cFour = Tex("c").color(YELLOW)
+        aOne = Text("a", color=YELLOW, font="Minion Pro SmBd")
+        bOne = Text("b",color=YELLOW, font="Minion Pro SmBd")
+        cOne = Text("c", color=YELLOW, font="Minion Pro SmBd")
+        aTwo = Text("a", color=YELLOW, font="Minion Pro SmBd")
+        bTwo = Text("b", color=YELLOW, font="Minion Pro SmBd")
+        cTwo = Text("c", color=YELLOW, font="Minion Pro SmBd")
+        aThree = Text("a", color=YELLOW, font="Minion Pro SmBd")
+        bThree = Text("b", color=YELLOW, font="Minion Pro SmBd")
+        cThree = Text("c", color=YELLOW, font="Minion Pro SmBd")
+        aFour = Text("a", color=YELLOW, font="Minion Pro SmBd")
+        bFour = Text("b", color=YELLOW, font="Minion Pro SmBd")
+        cFour = Text("c", color=YELLOW, font="Minion Pro SmBd")
 
         labelsOne = VGroup(aOne, bOne, cOne)
         labelsTwo = VGroup(aTwo, bTwo, cTwo)
@@ -103,8 +115,9 @@ class pyProof(MovingCameraScene):
             AnimationGroup(
                 FadeIn(angleLineOne),
                 FadeIn(angleLineTwo),
+
                 lag_ratio=0.2
-            ), run_time=0.5
+            ), run_time=0.8
         )
 
         self.wait(0.25)
@@ -114,7 +127,7 @@ class pyProof(MovingCameraScene):
                 FadeOut(angleLineOne),
                 FadeOut(angleLineTwo),
                 lag_ratio=0.2
-            ), run_time=0.5
+            ), run_time=0.8
         )
 
         self.play(Write(labelsOne))
@@ -172,20 +185,20 @@ class pyProof(MovingCameraScene):
         eqEqual = MathTex("=").next_to(areaLabel, RIGHT)
 
         smallTriangleOne = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                                   color=GREEN, fill_opacity=0.5)
+                                   color=TEAL_C, fill_opacity=0.7)
         smallTriangleTwo = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                                   color=GREEN, fill_opacity=0.5).shift(5*RIGHT+UP).rotate(PI/2)
+                                   color=TEAL_C, fill_opacity=0.7).shift(5*RIGHT+UP).rotate(PI/2)
         smallTriangleThre = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                                    color=GREEN, fill_opacity=0.5).shift(4*RIGHT+6*UP).rotate(-PI)
+                                    color=TEAL_C, fill_opacity=0.7).shift(4*RIGHT+6*UP).rotate(-PI)
         smallTriangleFour = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                                    color=GREEN, fill_opacity=0.5).shift(5*UP+LEFT).rotate(-PI/2)
-        plusOne = Tex("+").shift(6*DOWN-1.5*RIGHT)
-        plusTwo = Tex("+").shift(6*DOWN+0.5*RIGHT)
-        plusThree = Tex("+").shift(6*DOWN+2.5*RIGHT)
-        plusFour = Tex("+").shift(6*DOWN+4.5*RIGHT)
-
+                                    color=TEAL_C, fill_opacity=0.7).shift(5*UP+LEFT).rotate(-PI/2)
+        plusOne = Text("+", color   = YELLOW_C).shift(6*DOWN-1.5*RIGHT)
+        plusTwo = Text("+", color   = YELLOW_C).shift(6*DOWN+0.5*RIGHT)
+        plusThree = Text("+", color = YELLOW_C).shift(6*DOWN+2.5*RIGHT)
+        plusFour = Text("+",color   = YELLOW_C).shift(6*DOWN+4.5*RIGHT)
+ 
         finalSmallTriangle = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
-                                     color=GREEN, fill_opacity=0.5).move_to([-1.5, -6, 0]).scale(0.2)
+                                     color=TEAL_B, fill_opacity=0.8).move_to([-1.5, -6, 0]).scale(0.2)
         fourTimes = MathTex(r"4 \times").move_to([-2.5, -6, 0])
         triangleEquationOne = VGroup(smallTriangleOne, smallTriangleTwo,
                                      smallTriangleThre, smallTriangleFour, plusOne, plusTwo, plusThree)
@@ -204,11 +217,11 @@ class pyProof(MovingCameraScene):
 
         # Fade in green color for all triangles
         self.play(
-            FadeToColor(triangleOne, GREEN),
-            FadeToColor(triangleTwo, GREEN),
+            FadeToColor(triangleOne, color=TEAL_C),
+            FadeToColor(triangleTwo, color=TEAL_C),
             
-            FadeToColor(triangleThree, GREEN),
-            FadeToColor(triangleFour, GREEN),
+            FadeToColor(triangleThree,color= TEAL_C),
+            FadeToColor(triangleFour,color= TEAL_C),
             run_time=0.5
         )
 
@@ -285,7 +298,7 @@ class pyProof(MovingCameraScene):
 
         self.wait(1)
 
-        finalEq = MathTex("a^2+b^2 = c^2").move_to(VGroup(newBSquareEq, eqEqualTwo,
+        finalEq = MathTex("a^2+b^2 = c^2", color= YELLOW).move_to(VGroup(newBSquareEq, eqEqualTwo,
                                   newTriangleEq, smallSquareEq, plusFive).get_center())
 
         self.wait(1)
