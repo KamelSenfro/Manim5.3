@@ -36,8 +36,8 @@ class pyProof(MovingCameraScene):
                                color= TEAL_C  , fill_opacity=0.5)
 
         # Create angle lines
-        angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color = [PURE_GREEN,TEAL_C])
-        angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=[PURE_GREEN,TEAL_C])
+        angleLineOne = Line([-4, -3, 0], [-4, -2, 0], color = [GREEN,BLUE_D], fill_opacity=0.5)
+        angleLineTwo = Line([-4, -2, 0], [-5, -2, 0], color=[GREEN,BLUE_D],   fill_opacity=0.5)
 
         # Create big square
         bigSquare = Polygon([-5, -3, 0], [-5, 7, 0],
@@ -47,9 +47,9 @@ class pyProof(MovingCameraScene):
 
         # Create small square
         smallSquareColor = Polygon([-5, 1, 0], [-1, 7, 0],
-                                   [5, 3, 0], [1, -3, 0], fill_color=RED_E, fill_opacity=0.5)
+                                   [5, 3, 0], [1, -3, 0], fill_color=RED_E, fill_opacity=0.8, stroke_color=RED)
         smallSquare = Polygon([-5, 1, 0], [-1, 7, 0],
-                              [5, 3, 0], [1, -3, 0], fill_color=RED_E, fill_opacity=0.5)
+                              [5, 3, 0], [1, -3, 0], fill_color=RED_E, fill_opacity=0.8,  stroke_color=RED)
 
         # Create labels for triangles
         # aOne = Tex("a").color(YELLOW)
@@ -76,8 +76,8 @@ class pyProof(MovingCameraScene):
         aFour = Text("a", color=YELLOW, font="Minion Pro SmBd")
         bFour = Text("b", color=YELLOW, font="Minion Pro SmBd")
         cFour = Text("c", color=YELLOW, font="Minion Pro SmBd")
-        Like = Text("Like und subscribe", color=(ORANGE), font="Minion Pro SmBd")
-        Like.to_corner(DR)
+        # Like = Text("Subscribe für mehr", gradient=(YELLOW, RED_E, ORANGE), font="Minion Pro SmBd")
+        # Like.to_corner(DR)
         labelsOne = VGroup(aOne, bOne, cOne)
         labelsTwo = VGroup(aTwo, bTwo, cTwo)
         labelsThree = VGroup(aThree, bThree, cThree)
@@ -320,6 +320,6 @@ class pyProof(MovingCameraScene):
             triangleOne.animate.move_to([0, -1, 0]).scale(2),
             finalEq.animate.move_to([0, -7.5, 0]).scale(2)
         )
-
-        self.play(Write(Like))
-        self.wait(3)
+        self.wait(1)
+        #self.play(FadeIn(Like))
+        self.wait(2)
