@@ -43,13 +43,13 @@ class pyProof(MovingCameraScene):
         bigSquare = Polygon([-5, -3, 0], [-5, 7, 0],
                             [5, 7, 0], [5, -3, 0], fill_color=PURPLE_A, fill_opacity=0.75, stroke_color=PURPLE_B)
         bigSquareArea = Polygon([-5, -3, 0], [-5, 7, 0],
-                                [5, 7, 0], [5, -3, 0], fill_color=PURPLE_A, fill_opacity=0.75, stroke_color=PURPLE_D)
+                                [5, 7, 0], [5, -3, 0], fill_color=PURPLE_A, fill_opacity=0.75, stroke_color=PURPLE_B)
 
         # Create small square
         smallSquareColor = Polygon([-5, 1, 0], [-1, 7, 0],
-                                   [5, 3, 0], [1, -3, 0], fill_color=BLUE_C, fill_opacity=0.5)
+                                   [5, 3, 0], [1, -3, 0], fill_color=RED_E, fill_opacity=0.5)
         smallSquare = Polygon([-5, 1, 0], [-1, 7, 0],
-                              [5, 3, 0], [1, -3, 0], fill_color=BLUE_C, fill_opacity=0.5)
+                              [5, 3, 0], [1, -3, 0], fill_color=RED_E, fill_opacity=0.5)
 
         # Create labels for triangles
         # aOne = Tex("a").color(YELLOW)
@@ -76,7 +76,8 @@ class pyProof(MovingCameraScene):
         aFour = Text("a", color=YELLOW, font="Minion Pro SmBd")
         bFour = Text("b", color=YELLOW, font="Minion Pro SmBd")
         cFour = Text("c", color=YELLOW, font="Minion Pro SmBd")
-
+        Like = Text("Like und subscribe", color=(ORANGE), font="Minion Pro SmBd")
+        Like.to_corner(DR)
         labelsOne = VGroup(aOne, bOne, cOne)
         labelsTwo = VGroup(aTwo, bTwo, cTwo)
         labelsThree = VGroup(aThree, bThree, cThree)
@@ -199,7 +200,7 @@ class pyProof(MovingCameraScene):
  
         finalSmallTriangle = Polygon([-5, -3, 0], [-5, 1, 0], [1, -3, 0],
                                      color=TEAL_B, fill_opacity=0.8).move_to([-1.5, -6, 0]).scale(0.2)
-        fourTimes = MathTex(r"4 \times").move_to([-2.5, -6, 0])
+        fourTimes = MathTex(r"4 \times", color=YELLOW).move_to([-2.5, -6, 0])
         triangleEquationOne = VGroup(smallTriangleOne, smallTriangleTwo,
                                      smallTriangleThre, smallTriangleFour, plusOne, plusTwo, plusThree)
         triangleEquationTwo = VGroup(
@@ -263,22 +264,22 @@ class pyProof(MovingCameraScene):
         self.wait(2)
 
         # Add underbraces and write equations
-        underbraceOne = MathTex(r"\underbrace{}").move_to([0.5, -8, 0])
-        underbraceTwo = MathTex(r"\underbrace{}").move_to([3, -8, 0])
-        underbraceThree = MathTex(r"\underbrace{}").move_to([-2.5, -8, 0])
+        underbraceOne = MathTex(r"\underbrace{}", color  = YELLOW_A).move_to([0.5, -8, 0])
+        underbraceTwo = MathTex(r"\underbrace{}",color   = YELLOW_A ).move_to([3, -8, 0])
+        underbraceThree = MathTex(r"\underbrace{}",color = YELLOW_A).move_to([-2.5, -8, 0])
 
-        triangleEq = MathTex(r"4 \times \frac{ab}{2}").move_to(
+        triangleEq = MathTex(r"4 \times \frac{ab}{2}", color= YELLOW).move_to(
             [0.5, -9, 0])
-        newTriangleEq = MathTex(r"2ab").move_to(
+        newTriangleEq = MathTex(r"2ab" ,color= YELLOW).move_to(
             triangleEq.get_center())
-        smallSquareEq = MathTex(r"c^2").move_to([3, -9, 0])
+        smallSquareEq = MathTex(r"c^2",color= YELLOW).move_to([3, -9, 0])
 
-        bSquareEq = MathTex("(a+b)^2").move_to([-2.5, -9, 0])
+        bSquareEq = MathTex("(a+b)^2",color= YELLOW).move_to([-2.5, -9, 0])
         newBSquareEq = MathTex(
-            "a^2+2ab+b^2").move_to(bSquareEq.get_center())
+            "a^2+2ab+b^2",color= YELLOW).move_to(bSquareEq.get_center())
 
-        plusFive = Tex("+").move_to([2, -9, 0])
-        eqEqualTwo = MathTex("=").move_to([-0.5, -9, 0])
+        plusFive = Tex("+",color= YELLOW).move_to([2, -9, 0])
+        eqEqualTwo = MathTex("=",color= YELLOW).move_to([-0.5, -9, 0])
 
         self.play(Write(underbraceOne), run_time=0.5)
         self.play(Write(triangleEq))
@@ -320,4 +321,5 @@ class pyProof(MovingCameraScene):
             finalEq.animate.move_to([0, -7.5, 0]).scale(2)
         )
 
+        self.play(Write(Like))
         self.wait(3)
