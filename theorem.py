@@ -4,7 +4,7 @@ import numpy as np
 # Configured to be a vertical video
 config.pixel_height = 1920
 config.pixel_width = 1080
-config.background_color = BLACK
+config.background_color = LOGO_WHITE
 
 
 class pyProof(MovingCameraScene):
